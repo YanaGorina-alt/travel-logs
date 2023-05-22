@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+require('./User');
 
 
 const postSchema = new Schema ({
@@ -8,7 +9,10 @@ const postSchema = new Schema ({
     image: {type: String, required: true},
     location:{type: String, required: true},
     date: {type: Date, required: true},
-    user: {type: String, required: true}
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User', 
+        required: true}
 });
 
 module.exports = mongoose.model('Post', postSchema);

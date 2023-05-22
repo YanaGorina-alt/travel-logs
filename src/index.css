@@ -1,4 +1,15 @@
 /* CSS Custom Properties */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Dancing+Script:wght@600&display=swap');
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
 :root {
   --white: #FFFFFF;
   --tan-1: #FBF9F6;
@@ -21,7 +32,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: var(--white);
   padding: 2vmin;
   height: 100vh;
 }
