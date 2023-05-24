@@ -32,7 +32,7 @@ const HomePage = () => {
                 OPEN UP AND SHARE THE ADVENTURES OF YOUR TRAVELS
             </Typography>
             <Box margin='auto'>
-                <Button  variant='outlined' sx={{mr: 2}}> 
+                <Button LinkComponent={Link} to="/add" variant='outlined' sx={{mr: 2}}> 
                     Share Your Story
                 </Button >
                 <Button LinkComponent={Link} to="/posts" variant="contained" sx={{ml: 2}}>
