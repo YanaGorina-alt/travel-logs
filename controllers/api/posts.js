@@ -22,17 +22,17 @@ module.exports = {
 
 async function addPost(req, res) {
   try {
-    const { title, description, location, date, image, user } = req.body;
+    const { title, description, location, date, image } = req.body;
     
 
     // Add the post reference to the user's posts array
-    const existingUser = await User.findById(user)
+    const existingUser = await User.findById(req.user._id)
     // Check if the user with the provided ID exists
     if(!existingUser) throw new Error("User not found");
 
+    req.body.user=req.user._id;
     //Create the post
     const post = await Post.create(req.body);
-
     // Add the post reference to the user's posts array
     existingUser.posts.push(post._id);
 
@@ -48,6 +48,7 @@ async function addPost(req, res) {
 async function getPostById (req,res) {
   try {
     const post = await Post.findById(req.params.id);
+    console.log("Info of the post: ", post)
     if (!post) throw new Error("No post found");
     res.status(200).json(post)
   } catch (error) {
@@ -57,15 +58,15 @@ async function getPostById (req,res) {
 
 async function updatePost (req,res) {
   try {
-    const {title, description, location, date, image, user} = req.body;
+    const {title, description, location, image} = req.body;
     const post = await Post.findByIdAndUpdate(req.params.id, {
       title, 
       description, 
       location, 
-      date: new Date (`${date}`), 
+      // date: new Date (`${date}`), 
       image
     });
-    if (!post) throw new Error("Unable to uodate");
+    if (!post) throw new Error("Unable to update");
     res.status(200).json("Updated Successfully");
   } catch (error) {
     res.status(400).json({ msg: error.message });

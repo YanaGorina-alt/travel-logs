@@ -19,8 +19,13 @@ export default function LoginForm({ setUser }) {
         // prevent form from being submitted to the server
         evt.preventDefault()
         try {
-            const user = await usersService.login(credentials)
+          setError("")
+             const user = await usersService.login(credentials)
+             
+             //console.log( user)
+             //console.log(setUser)
             setUser(user)
+            //console.log("user")
         } catch(err) {
             setError('Log in failed - Try Again')
         }
@@ -29,6 +34,7 @@ export default function LoginForm({ setUser }) {
   return (
     <div>
       <div className="form-container">
+          <h3>Login</h3>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Email</label>
           <input

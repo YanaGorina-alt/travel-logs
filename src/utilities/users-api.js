@@ -9,6 +9,10 @@ export function login(credentials) {
   return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
 }
 
+export function getUserDetails(id) {
+  return sendRequest(`${BASE_URL}/${id}`);
+}
+
 // export function checkToken() {
 //   return sendRequest(`${BASE_URL}/check-token`);
 // }

@@ -4,7 +4,8 @@ import LogItem from '../../components/LogItem/LogItem'
 import { Box } from '@mui/material'
 
 
-const LogsPage = () => {
+
+const LogsPage = ({user}) => {
     const [posts, setPosts] = useState([]); // Add state for storing posts
 
     useEffect(() => {
@@ -35,6 +36,10 @@ const LogsPage = () => {
             id={item._id}
             location={item.location}
             title={item.title}
+            user={item.user}
+            logedInUser ={user}
+            userId ={item.user._id}
+            name={item.user.name}
         />
       ))}
        

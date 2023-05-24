@@ -35,7 +35,7 @@ const HomePage = () => {
                 <Button  variant='outlined' sx={{mr: 2}}> 
                     Share Your Story
                 </Button >
-                <Button LinkComponent={Link} to="/logs" variant="contained" sx={{ml: 2}}>
+                <Button LinkComponent={Link} to="/posts" variant="contained" sx={{ml: 2}}>
                     View Logs
                 </Button>
             </Box>

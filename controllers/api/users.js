@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
   create,
   login,
-  //checkToken,
+  getUserById
 };
 
 // This function fires when a request is made to /api/users POST (sign up option)
@@ -41,6 +41,17 @@ async function login(req, res) {
     res.json(createJWT(user));
   } catch {
     res.status(400).json('Bad Credentials');
+  }
+}
+
+async function getUserById(req,res) {
+  try {
+    const user = await User.findById(req.params.id).populate("posts");
+    console.log("This is the user: ", user)
+    if (!user) throw new Error("No such user was found");
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
   }
 }
 
